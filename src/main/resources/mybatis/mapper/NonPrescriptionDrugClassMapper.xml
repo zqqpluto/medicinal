@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pluto.medicinal.dao.NonPrescriptionDrugClassMapper">
+  <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.NonPrescriptionDrugClass">
+    <id column="ndcId" jdbcType="INTEGER" property="ndcid" />
+    <result column="ndcClass" jdbcType="VARCHAR" property="ndcclass" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ndcId, ndcClass
+  </sql>
+  <select id="selectByExample" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClassExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from non_prescription_drug_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from non_prescription_drug_class
+    where ndcId = #{ndcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from non_prescription_drug_class
+    where ndcId = #{ndcid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClassExample">
+    delete from non_prescription_drug_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClass">
+    insert into non_prescription_drug_class (ndcId, ndcClass)
+    values (#{ndcid,jdbcType=INTEGER}, #{ndcclass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClass">
+    insert into non_prescription_drug_class
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ndcid != null">
+        ndcId,
+      </if>
+      <if test="ndcclass != null">
+        ndcClass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ndcid != null">
+        #{ndcid,jdbcType=INTEGER},
+      </if>
+      <if test="ndcclass != null">
+        #{ndcclass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClassExample" resultType="java.lang.Long">
+    select count(*) from non_prescription_drug_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update non_prescription_drug_class
+    <set>
+      <if test="record.ndcid != null">
+        ndcId = #{record.ndcid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ndcclass != null">
+        ndcClass = #{record.ndcclass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update non_prescription_drug_class
+    set ndcId = #{record.ndcid,jdbcType=INTEGER},
+      ndcClass = #{record.ndcclass,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClass">
+    update non_prescription_drug_class
+    <set>
+      <if test="ndcclass != null">
+        ndcClass = #{ndcclass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ndcId = #{ndcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrugClass">
+    update non_prescription_drug_class
+    set ndcClass = #{ndcclass,jdbcType=VARCHAR}
+    where ndcId = #{ndcid,jdbcType=INTEGER}
+  </update>
+</mapper>
