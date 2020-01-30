@@ -158,8 +158,47 @@ ul{
 }
 
 .body-div{
-    width: 90%;
-    margin-left: 5%;
+    width: 100%;
+    height: 460px;
+    margin-top: 25px;
+}
+.body-div img{
+    width: 100%;
+}
+
+.importantId{
+    width: 80%;
+}
+
+.time{
+    width:20%;
+    text-align: right;
+}
+
+#important {
+    font-size: 21px;
+    font-family: monospace;
+}
+
+#important table{
+    width: 100%;
+}
+
+#low table{
+    width: 100%;
+}
+
+#low{
+    font-size: 21px;
+    font-family: monospace;
+}
+
+#important tr{
+    border-bottom: #c0c3c2 solid 1px;
+}
+
+#low tr{
+    border-bottom: #c0c3c2 solid 1px;
 }
 
 .line{
@@ -168,6 +207,13 @@ ul{
     height: 16px;
     background-color: rgb(24, 100, 152);
 }
+
+.line2{
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+
 .line-text{
     margin-top: 18px;
     font-size: 20px;
@@ -176,7 +222,28 @@ ul{
 
 .line-text a{
     display: inline-block;
-    margin-left: 80%;
+    margin-left: 85%;
+    color: #c0c3c2;
+    font-size: 16px;
+}
+#inner-box-left{
+    width: 60%;
+    font-size: 21px;
+    font-family: monospace;
+    float: left;
+}
+
+#inner-box-left table tr{
+    width: 100%;
+    border-bottom: #c0c3c2 solid 1px;
+}
+
+#inner-box-right{
+    width: 40%;
+    float: left;
+}
+#inner-msg{
+    width: 85%;
 }
 
 #service-object-imgs{
