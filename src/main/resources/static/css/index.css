@@ -106,7 +106,7 @@ ul{
 
 /**body**/
 #body{
-    height: 2000px;
+    /*height: 2000px;*/
     width: 100%;
     margin-top: 25px;
 }
@@ -157,17 +157,28 @@ ul{
     margin: auto;
 }
 
+.body-div{
+    width: 90%;
+    margin-left: 5%;
+}
+
 .line{
     margin-top: 16px;
     width: 100%;
-    height: 4px;
-    background-color: rgb(26, 25, 25);
+    height: 16px;
+    background-color: rgb(24, 100, 152);
 }
 .line-text{
     margin-top: 18px;
     font-size: 20px;
     font-weight: bold;
 }
+
+.line-text a{
+    display: inline-block;
+    margin-left: 80%;
+}
+
 #service-object-imgs{
     margin-top: 36px;
     width: 100%;
