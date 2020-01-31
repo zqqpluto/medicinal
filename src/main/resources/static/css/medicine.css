@@ -1,0 +1,142 @@
+.medicine-body{
+    position: relative;
+    top: 50px;
+    width: 86%;
+    margin: auto;
+}
+
+.medicine-top1>div{
+    float: left;
+    margin-right: 15px;
+}
+
+.medicine-top1{
+    width: 100%;
+}
+.m-left-l{
+    width: 6%;
+    text-align: center;
+}
+.m-left-l>div{
+    width: 100%;
+    height: 158px;
+    line-height: 158px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    /*background-color: rgba(9, 140, 166, 0.33);*/
+}
+.m-images1{
+    width: 30%;
+}
+.m-images1>img{
+    width: 100%;
+    height: 337px;
+
+}
+.m-jia{
+    border: blue solid 2px;
+}
+.m-yi{
+    border: red solid 2px;
+    background-color: #E4E4E4;
+}
+.m-r{
+    width: 58%;
+    background-color: #E4E4E4;
+    height: 337px;
+}
+
+.m-r>div{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.otc{
+    width: 25%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10%;
+    background-color: white;
+    margin-top: 30px;
+    border: #bfbfbf solid 2px;
+}
+select{
+    width: 30%;
+    height: 40px;
+}
+
+.m-s-d{
+    vertical-align: middle;
+    /*height: 58px;*/
+    /*width: 50%;*/
+}
+.m-s-d>input{
+    vertical-align: middle;
+    height: 58px;
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-left: 20px;
+    margin-right: 0px;
+    width: 60%;
+    font-size: 16px;
+}
+.m-s-d>img{
+    vertical-align: middle;
+    margin-left: -5px;
+    height: 58px;
+    cursor: pointer;
+}
+.m-table{
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.m-table-title{
+    text-align: center;
+    font-size: 18px
+}
+.m-table-title-xq{
+    text-align: center;
+    font-size: 18px;
+    background-color: #0C75BB;
+}
+.m-table--tbody{
+    font-size: 16px;
+}
+.m-table-foot button{
+    /*margin-top: 20px;*/
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
+    background-color: #f3f3f3;
+    border: #666666 solid 1px;
+}
+
+.foot-l{
+    float: right;
+}
+.m-table-foot div{
+    width: 20%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*height: 50px;*/
+    border-radius: 10%;
+}
+.m-table-foot{
+    background-color: #ececec;
+}
+#fan{
+    width: 100px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*display: inline-block;*/
+}
+.m-table-tbody{
+    width: 100%;
+}
+
+td{
+    cursor: pointer;
+}
