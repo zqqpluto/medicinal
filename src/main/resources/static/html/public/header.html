@@ -18,8 +18,13 @@
 <div id="menu0">
     <div id="menu">
         <ul id="main-menu">
+
             <li id="index"><a href="#">首页</a></li>
             <li class="child-show" ><a href="#">知识服务系统</a>
+=======
+            <li ><a href="./index.html" id="indexPage">首页</a></li>
+            <li class="child-show" ><a href="./knowledgeservice.html" id="knowledgePage" >知识服务系统</a>
+
             </li>
             <li class="child-show" id="m-jia"><a href="../../medicine-jia.html">甲类非处方药</a>
             </li>
@@ -29,6 +34,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(function () {
 
     })
@@ -46,6 +52,24 @@
         $('#main-menu li a').each(function () {
             //console.log(this)
             this.className = this == f ? 'active' : 'none';
+=======
+    
+    $(function () {
+        /*点击进入不同页面菜单变成不同颜色*/
+        var strarr = window.location.href.split("/")
+        var str = strarr[strarr.length - 1]
+        if (str == "index.html"){
+            $("#indexPage").css("backgroundColor",'rgba(9, 140, 166, 0.33)');
+        } else if(str == "knowledgeservice.html"){
+            $("#knowledgePage").css("backgroundColor",'rgba(9, 140, 166, 0.33)');
+        }
+    });
+    
+    $('#main-menu li a').click(function () {
+        var f = this;
+        $('#main-menu li a').each(function () {
+            // this.className = this == f ? 'active' : 'none';
+
             this.style.removeProperty('background-color');
             if (this == f){
                 this.style.backgroundColor = 'rgba(9, 140, 166, 0.33)';
