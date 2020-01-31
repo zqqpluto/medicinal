@@ -3,38 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>三方共制的非处方药监管平台</title>
     <link href="../css/index.css" type="text/css" rel="stylesheet">
     <link href="../css/footer.css" type="text/css" rel="stylesheet">
+    <link href="../css/knowledge.css" type="text/css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
-    <link href="../webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="../webjars/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <!--<link href="../webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
+
+    <script src="../js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap-paginator.js" type="text/javascript"></script>
+
+    <!--<script src="../webjars/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>-->
     <script src="../js/index.js" type="text/javascript"></script>
-    <script src="../webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="../webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+    <style>
+        #page li{
+            cursor:pointer;
+        }
+    </style>
 </head>
+
 <body style="width: 90%;margin-left: 5%;">
 
 <!--菜单栏-->
-<div class="menu"> </div>
+<div class="menu"></div>
 
 <!--中间内容-->
-<div>
-<h1>中间内容。。。。。。</h1>
+<div id="inner">
+    <!--侧边菜单-->
+    <div id="knowledgeMenus">
+        <a href="#"><div class="knowledgeMenu">媒体资讯</div></a>
+        <a href="#"><div class="knowledgeMenu">重大事件</div></a>
+        <a href="#"><div class="knowledgeMenu">国外资料</div>
+        <a href="#"><div class="knowledgeMenu">领导讲话</div></a>
+        <a href="#"><div class="knowledgeMenu">法律法规</div></a>
+        <a href="#"><div class="knowledgeMenu">两会文件</div></a>
+        <a href="#"><div class="knowledgeMenu">党的文献</div></a>
+        <a href="#"><div class="knowledgeMenu">标准规范</div></a>
+        <a href="#"><div class="knowledgeMenu">科学研究</div></a>
+        <a href="#"><div class="knowledgeMenu">专项政策</div></a>
+        <a href="#"><div class="knowledgeMenu">非处方药生产企业</div></a>
+    </div>
 
+    <div id="knowledge">
+        <!--搜索栏-->
+        <div id="search">
+            <div id="inputFrom">
+                    <input type="text" id="inputText">
+                    <button class="btn btn-primary">查询</button>
+            </div>
+            <div id="imputImg">
+                <img src="../images/u11.png">
+            </div>
+        </div>
+
+        <!--内容栏-->
+        <div id="msg">
+            <div class="container">
+                <div style="margin-top: 100px;">
+                    <ul id="page"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--尾部-->
 <div class="foot"></div>
 <script>
-    $(function(){
-        console.log("进入了/。。。。。。")
+    $(function () {
         $('.menu').load("./public/header.html");
         $('.foot').load('./public/footer.html');
     })
 </script>
+
+<script type="text/javascript">
+    $(function () {
+        var currentPage = 1;
+        var totalPages = 25;
+        $("#page").bootstrapPaginator({
+            bootstrapMajorVersion:3, //对应的bootstrap版本
+            currentPage: currentPage, //当前页数
+            numberOfPages: 10, //每次显示页数
+            totalPages:totalPages, //总页数
+            shouldShowPage:true,//是否显示该按钮
+            useBootstrapTooltip:true,
+            //点击事件
+            onPageClicked: function (event, originalEvent, type, page) {
+
+            }
+        });
+    });
+
+    $('#knowledgeMenus a').click(function () {
+        var f = this;
+        $('#knowledgeMenus a').each(function () {
+            // this.className = this == f ? 'active' : 'none';
+            $(this).children("div").removeAttr("style");
+            if (this == f){
+                $(this).children("div").css("background-color","red");
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
