@@ -57,7 +57,11 @@
 }
 
 #inner {
+<<<<<<< HEAD
     margin: auto;
     margin-top: 30px;
     width: 86%;
+=======
+    margin-top: 30px;
+>>>>>>> e4dcf93b30a17c623fd438de4cae4653650def8f
 }
