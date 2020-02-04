@@ -1,6 +1,6 @@
 #knowledgeMenus {
     width: 20%;
-    background-color: bisque;
+    background-color: #f4f3f2;
     height: 800px;
     border-color: black;
     border-style: solid;
@@ -10,7 +10,7 @@
 
 #knowledge{
     width: 100%;
-    background-color: aqua;
+    /*background-color: aqua;*/
     height: 800px;
 }
 .knowledgeMenu {
@@ -61,3 +61,16 @@
     margin: auto;
     margin-top: 30px;
 }
+
+#pageInfo{
+    margin-top: 20px;
+    margin-left: 25%;
+    height: 460px;
+    font-size: 21px;
+    font-family: monospace;
+}
+
+.borderTr{
+    border-bottom: #c0c3c2 solid 1px;
+}
+

@@ -1,10 +1,12 @@
 server:
   port: 8090
+  servlet:
+    context-path: /medicinal
 spring:
   datasource:
 #   数据源基本配置jdbc:mysql://localhost:3306/drugregualation?serverTimezone=UTC&characterEncoding=utf-8
     username: root
-    password: 1728aceAB7
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/drugregulation?characterEncoding=UTF-8&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
@@ -34,3 +36,16 @@ mybatis:
   # 指定sql映射文件位置
   mapper-locations: classpath:mybatis/mapper/*.xml
 
+
+# springboot打印sql日志
+#logging:
+#  level:
+#    cn.pluto.medicinal.dao.*: debug
+
+
+# pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
