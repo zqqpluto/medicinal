@@ -39,12 +39,14 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- 分页插件 -->
+		<!--分页插件-->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>4.0.0</version>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.3</version>
 		</dependency>
+
+
 		<!--引入druid-->
 		<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
 		<dependency>

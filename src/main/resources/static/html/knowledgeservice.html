@@ -23,9 +23,14 @@
     <!--<script src="../webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 
     <style>
-        #page li{
-            cursor:pointer;
+        #page li {
+            cursor: pointer;
         }
+        a{
+            color: black;
+        }
+
+        a:hover{text-decoration:none}
     </style>
 </head>
 
@@ -38,25 +43,47 @@
 <div id="inner">
     <!--侧边菜单-->
     <div id="knowledgeMenus">
-        <a href="#"><div class="knowledgeMenu">媒体资讯</div></a>
-        <a href="#"><div class="knowledgeMenu">重大事件</div></a>
-        <a href="#"><div class="knowledgeMenu">国外资料</div>
-        <a href="#"><div class="knowledgeMenu">领导讲话</div></a>
-        <a href="#"><div class="knowledgeMenu">法律法规</div></a>
-        <a href="#"><div class="knowledgeMenu">两会文件</div></a>
-        <a href="#"><div class="knowledgeMenu">党的文献</div></a>
-        <a href="#"><div class="knowledgeMenu">标准规范</div></a>
-        <a href="#"><div class="knowledgeMenu">科学研究</div></a>
-        <a href="#"><div class="knowledgeMenu">专项政策</div></a>
-        <a href="#"><div class="knowledgeMenu">非处方药生产企业</div></a>
+        <a onclick="getKnowledge(1001, 1)">
+            <div class="knowledgeMenu" id="1001">媒体资讯</div>
+        </a>
+        <a onclick="getKnowledge(1002, 1)">
+            <div class="knowledgeMenu" id="1002">国外资料</div>
+        </a>
+        <a onclick="getKnowledge(1003, 1)">
+            <div class="knowledgeMenu" id="1003">重大事件</div>
+        </a>
+        <a onclick="getKnowledge(1004, 1)">
+            <div class="knowledgeMenu" id="1004">领导讲话</div>
+        </a>
+        <a onclick="getKnowledge(1005, 1)">
+            <div class="knowledgeMenu" id="1005">法律法规</div>
+        </a>
+        <a onclick="getKnowledge(1006, 1)">
+            <div class="knowledgeMenu" id="1006">两会文件</div>
+        </a>
+        <a onclick="getKnowledge(1007, 1)">
+            <div class="knowledgeMenu" id="1007">党的文献</div>
+        </a>
+        <a onclick="getKnowledge(1008, 1)">
+            <div class="knowledgeMenu" id="1008">标准规范</div>
+        </a>
+        <a onclick="getKnowledge(1009, 1)">
+            <div class="knowledgeMenu" id="1009">专项政策</div>
+        </a>
+        <a onclick="getKnowledge(1010, 1)">
+            <div class="knowledgeMenu" id="1010">生产企业</div>
+        </a>
+        <a onclick="getKnowledge(1011, 1)">
+            <div class="knowledgeMenu" id="1011">科学研究</div>
+        </a>
     </div>
 
     <div id="knowledge">
         <!--搜索栏-->
         <div id="search">
             <div id="inputFrom">
-                    <input type="text" id="inputText">
-                    <button class="btn btn-primary">查询</button>
+                <input type="text" id="inputText">
+                <button class="btn btn-primary">查询</button>
             </div>
             <div id="imputImg">
                 <img src="../images/u11.png">
@@ -65,8 +92,9 @@
 
         <!--内容栏-->
         <div id="msg">
+            <div id="pageInfo"></div>
             <div class="container">
-                <div style="margin-top: 100px;">
+                <div style="margin-top: 10px;margin-left: 23%;">
                     <ul id="page"></ul>
                 </div>
             </div>
@@ -84,33 +112,93 @@
 </script>
 
 <script type="text/javascript">
+
     $(function () {
-        var currentPage = 1;
-        var totalPages = 25;
+        var code = getUrlParam("code")
+
+        $("#"+code+"").css("background-color", "rgb(168, 170, 175)");
+        getKnowledge(code,1)
+    });
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+
+
+
+    function page(code, data){
+
+        // if (code != 1011){
+            var str = "<table class='table table-striped table-hover'>";
+            $(data.data.list).each(function (index, item) {
+                var kind = item.ndcid == 0 ? '甲类':'乙类'
+                str +=
+                    "<tr class='borderTr'> <td><span class='badge'>"+((data.data.pageNum-1)*10+index+1)+"</span></td>"
+                    +"<td style='width: 90%' ><a href='"+item.kspath+"'>"+item.kstitle+"</a></td>" +
+                    "<td style='width: 10%'>"+kind+"</td> </tr>"
+            });
+            str += "</table>"
+            $("#pageInfo").html(str)
+        // }else {/**科学研究是文件的形式，暂时这么处理*/
+        //
+        //
+        //     var str = "<table>";
+        //     $(data.data.list).each(function (index, item) {
+        //         str +=
+        //             "<tr class='borderTr'> <td><span class='badge'>"+((data.data.pageNum-1)*10+index+1)+"</span></td>"+"<td style='width: 100%' > <a href='"+item.kspath+"'>"+"&emsp;"+item.kstitle+"</a></td> </tr>"
+        //     })
+        //     str += "</table>"
+        //     $("#pageInfo").html(str)
+        // }
+
+        var currentPage = data.data.pageNum;
+        var totalPages = data.data.pages;
         $("#page").bootstrapPaginator({
-            bootstrapMajorVersion:3, //对应的bootstrap版本
+            bootstrapMajorVersion: 3, //对应的bootstrap版本
             currentPage: currentPage, //当前页数
             numberOfPages: 10, //每次显示页数
-            totalPages:totalPages, //总页数
-            shouldShowPage:true,//是否显示该按钮
-            useBootstrapTooltip:true,
+            totalPages: totalPages, //总页数
+            shouldShowPage: true,//是否显示该按钮
+            useBootstrapTooltip: true,
             //点击事件
             onPageClicked: function (event, originalEvent, type, page) {
-
+                getKnowledge(code, page);
             }
         });
-    });
+    }
 
     $('#knowledgeMenus a').click(function () {
         var f = this;
         $('#knowledgeMenus a').each(function () {
             // this.className = this == f ? 'active' : 'none';
             $(this).children("div").removeAttr("style");
-            if (this == f){
-                $(this).children("div").css("background-color","red");
+            if (this == f) {
+                $(this).children("div").css("background-color", "rgb(168, 170, 175)");
             }
         });
     });
+
+    function getKnowledge(code, currentPage) {
+        $.ajax({
+            url: "/medicinal/knowledge",
+            data: {"code": code,"currentPage": currentPage},
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                page(code, data);
+            },
+            error: function (err) {
+                alert("出错了")
+            }
+        });
+
+        // $.get("/knowledge",{"code":code},function (data) {
+        //     alert(data)
+        // })
+    }
 </script>
 
 </body>
