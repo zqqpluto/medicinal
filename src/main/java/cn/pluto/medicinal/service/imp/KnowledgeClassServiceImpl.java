@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @date 2020-01-30-17:34
  */
 @Service
-public class KnowledgeClassServiceImp implements KnowledgeClassService {
+public class KnowledgeClassServiceImpl implements KnowledgeClassService {
 
     @Autowired
     private KnowledgeClassMapper knowledgeClassMapper;
