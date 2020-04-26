@@ -3,6 +3,7 @@
 <mapper namespace="cn.pluto.medicinal.dao.ManufacturerMapper">
   <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.Manufacturer">
     <id column="mId" jdbcType="INTEGER" property="mid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="mName" jdbcType="VARCHAR" property="mname" />
     <result column="province" jdbcType="VARCHAR" property="province" />
     <result column="web" jdbcType="VARCHAR" property="web" />
@@ -89,7 +90,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    mId, mName, province, web, recordNumber, productionNumber, mainProduce, legalPerson, 
+    mId, userId, mName, province, web, recordNumber, productionNumber, mainProduce, legalPerson, 
     registeredCapital, paidinCapital, stateOperation, establishTime, uscCode, tiNumber, 
     rNumber, oCode, bType, industry, sanctionDate, registrationAuthority, eName, oName, 
     insurePersons, otStaff, operatingPeriod, address, gmp
@@ -125,32 +126,35 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.pluto.medicinal.pojo.Manufacturer">
-    insert into manufacturer (mId, mName, province, 
-      web, recordNumber, productionNumber, 
-      mainProduce, legalPerson, registeredCapital, 
-      paidinCapital, stateOperation, establishTime, 
-      uscCode, tiNumber, rNumber, 
-      oCode, bType, industry, 
-      sanctionDate, registrationAuthority, eName, 
-      oName, insurePersons, otStaff, 
-      operatingPeriod, address, gmp
-      )
-    values (#{mid,jdbcType=INTEGER}, #{mname,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{web,jdbcType=VARCHAR}, #{recordnumber,jdbcType=VARCHAR}, #{productionnumber,jdbcType=VARCHAR}, 
-      #{mainproduce,jdbcType=VARCHAR}, #{legalperson,jdbcType=VARCHAR}, #{registeredcapital,jdbcType=VARCHAR}, 
-      #{paidincapital,jdbcType=VARCHAR}, #{stateoperation,jdbcType=VARCHAR}, #{establishtime,jdbcType=VARCHAR}, 
-      #{usccode,jdbcType=VARCHAR}, #{tinumber,jdbcType=VARCHAR}, #{rnumber,jdbcType=VARCHAR}, 
-      #{ocode,jdbcType=VARCHAR}, #{btype,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
-      #{sanctiondate,jdbcType=VARCHAR}, #{registrationauthority,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, 
-      #{oname,jdbcType=VARCHAR}, #{insurepersons,jdbcType=VARCHAR}, #{otstaff,jdbcType=VARCHAR}, 
-      #{operatingperiod,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{gmp,jdbcType=VARCHAR}
-      )
+    insert into manufacturer (mId, userId, mName, 
+      province, web, recordNumber, 
+      productionNumber, mainProduce, legalPerson, 
+      registeredCapital, paidinCapital, stateOperation, 
+      establishTime, uscCode, tiNumber, 
+      rNumber, oCode, bType, 
+      industry, sanctionDate, registrationAuthority, 
+      eName, oName, insurePersons, 
+      otStaff, operatingPeriod, address, 
+      gmp)
+    values (#{mid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{mname,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{web,jdbcType=VARCHAR}, #{recordnumber,jdbcType=VARCHAR}, 
+      #{productionnumber,jdbcType=VARCHAR}, #{mainproduce,jdbcType=VARCHAR}, #{legalperson,jdbcType=VARCHAR}, 
+      #{registeredcapital,jdbcType=VARCHAR}, #{paidincapital,jdbcType=VARCHAR}, #{stateoperation,jdbcType=VARCHAR}, 
+      #{establishtime,jdbcType=VARCHAR}, #{usccode,jdbcType=VARCHAR}, #{tinumber,jdbcType=VARCHAR}, 
+      #{rnumber,jdbcType=VARCHAR}, #{ocode,jdbcType=VARCHAR}, #{btype,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{sanctiondate,jdbcType=VARCHAR}, #{registrationauthority,jdbcType=VARCHAR}, 
+      #{ename,jdbcType=VARCHAR}, #{oname,jdbcType=VARCHAR}, #{insurepersons,jdbcType=VARCHAR}, 
+      #{otstaff,jdbcType=VARCHAR}, #{operatingperiod,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{gmp,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.Manufacturer">
     insert into manufacturer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="mid != null">
         mId,
+      </if>
+      <if test="userid != null">
+        userId,
       </if>
       <if test="mname != null">
         mName,
@@ -234,6 +238,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="mid != null">
         #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="mname != null">
         #{mname,jdbcType=VARCHAR},
@@ -327,6 +334,9 @@
       <if test="record.mid != null">
         mId = #{record.mid,jdbcType=INTEGER},
       </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=VARCHAR},
+      </if>
       <if test="record.mname != null">
         mName = #{record.mname,jdbcType=VARCHAR},
       </if>
@@ -413,6 +423,7 @@
   <update id="updateByExample" parameterType="map">
     update manufacturer
     set mId = #{record.mid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
       mName = #{record.mname,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
       web = #{record.web,jdbcType=VARCHAR},
@@ -446,6 +457,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.Manufacturer">
     update manufacturer
     <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="mname != null">
         mName = #{mname,jdbcType=VARCHAR},
       </if>
@@ -529,7 +543,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.Manufacturer">
     update manufacturer
-    set mName = #{mname,jdbcType=VARCHAR},
+    set userId = #{userid,jdbcType=VARCHAR},
+      mName = #{mname,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       web = #{web,jdbcType=VARCHAR},
       recordNumber = #{recordnumber,jdbcType=VARCHAR},

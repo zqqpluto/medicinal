@@ -20,7 +20,7 @@ public class KnowledgeServiceServiceImpl implements KnowledgeServiceService{
 
     @Autowired
     private KnowledgeServiceMapper knowledgeServiceMapper;
-    
+
     private KnowledgeServiceExample knowledgeServiceExample;
 
     /**

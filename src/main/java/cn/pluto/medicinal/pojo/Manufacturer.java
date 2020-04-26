@@ -3,6 +3,8 @@ package cn.pluto.medicinal.pojo;
 public class Manufacturer {
     private Integer mid;
 
+    private String userid;
+
     private String mname;
 
     private String province;
@@ -61,6 +63,14 @@ public class Manufacturer {
 
     public void setMid(Integer mid) {
         this.mid = mid;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getMname() {

@@ -3,11 +3,8 @@ package cn.pluto.medicinal.dao;
 import cn.pluto.medicinal.pojo.KnowledgeClass;
 import cn.pluto.medicinal.pojo.KnowledgeClassExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-@Mapper
 public interface KnowledgeClassMapper {
     long countByExample(KnowledgeClassExample example);
 

@@ -60,16 +60,4 @@ public class KnowledgeService {
     public void setKstitle(String kstitle) {
         this.kstitle = kstitle == null ? null : kstitle.trim();
     }
-
-    @Override
-    public String toString() {
-        return "KnowledgeService{" +
-                "ksid=" + ksid +
-                ", kcid=" + kcid +
-                ", ndcid=" + ndcid +
-                ", mid=" + mid +
-                ", kspath='" + kspath + '\'' +
-                ", kstitle='" + kstitle + '\'' +
-                '}';
-    }
 }

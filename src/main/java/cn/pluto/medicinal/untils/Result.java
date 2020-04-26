@@ -39,6 +39,13 @@ public class Result {
         return res;
     }
 
+    public static Result success(String msg){
+        Result res = new Result();
+        res.setCode(200);
+        res.setMsg(msg);
+        return res;
+    }
+
     //请求成功返回数据给前端
     public static Result success(Object data){
         Result res = new Result();

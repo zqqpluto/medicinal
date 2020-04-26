@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.pluto.medicinal.dao.PowerMapper">
-  <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.Power">
-    <id column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="menu_id" jdbcType="INTEGER" property="menuId" />
-    <result column="rank" jdbcType="VARCHAR" property="rank" />
-    <result column="rank_name" jdbcType="VARCHAR" property="rankName" />
-    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
+<mapper namespace="cn.pluto.medicinal.dao.EnterpriseWorkerMapper">
+  <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.EnterpriseWorker">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="workerName" jdbcType="VARCHAR" property="workername" />
+    <result column="mName" jdbcType="VARCHAR" property="mname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    pid, menu_id, rank, rank_name, father_id
+    id, userId, workerName, mName
   </sql>
-  <select id="selectByExample" parameterType="cn.pluto.medicinal.pojo.PowerExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorkerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from power
+    from enterprise_worker
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,88 +82,79 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from power
-    where pid = #{pid,jdbcType=INTEGER}
+    from enterprise_worker
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from power
-    where pid = #{pid,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from enterprise_worker
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.PowerExample">
-    delete from power
+  <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorkerExample">
+    delete from enterprise_worker
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.pluto.medicinal.pojo.Power">
-    insert into power (pid, menu_id, rank, 
-      rank_name, father_id)
-    values (#{pid,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, #{rank,jdbcType=VARCHAR}, 
-      #{rankName,jdbcType=VARCHAR}, #{fatherId,jdbcType=INTEGER})
+  <insert id="insert" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorker">
+    insert into enterprise_worker (id, userId, workerName, 
+      mName)
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{workername,jdbcType=VARCHAR}, 
+      #{mname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.Power">
-    insert into power
+  <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorker">
+    insert into enterprise_worker
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        pid,
+      <if test="id != null">
+        id,
       </if>
-      <if test="menuId != null">
-        menu_id,
+      <if test="userid != null">
+        userId,
       </if>
-      <if test="rank != null">
-        rank,
+      <if test="workername != null">
+        workerName,
       </if>
-      <if test="rankName != null">
-        rank_name,
-      </if>
-      <if test="fatherId != null">
-        father_id,
+      <if test="mname != null">
+        mName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pid != null">
-        #{pid,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="menuId != null">
-        #{menuId,jdbcType=INTEGER},
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="rank != null">
-        #{rank,jdbcType=VARCHAR},
+      <if test="workername != null">
+        #{workername,jdbcType=VARCHAR},
       </if>
-      <if test="rankName != null">
-        #{rankName,jdbcType=VARCHAR},
-      </if>
-      <if test="fatherId != null">
-        #{fatherId,jdbcType=INTEGER},
+      <if test="mname != null">
+        #{mname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.pluto.medicinal.pojo.PowerExample" resultType="java.lang.Long">
-    select count(*) from power
+  <select id="countByExample" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorkerExample" resultType="java.lang.Long">
+    select count(*) from enterprise_worker
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update power
+    update enterprise_worker
     <set>
-      <if test="record.pid != null">
-        pid = #{record.pid,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuId != null">
-        menu_id = #{record.menuId,jdbcType=INTEGER},
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
-      <if test="record.rank != null">
-        rank = #{record.rank,jdbcType=VARCHAR},
+      <if test="record.workername != null">
+        workerName = #{record.workername,jdbcType=VARCHAR},
       </if>
-      <if test="record.rankName != null">
-        rank_name = #{record.rankName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fatherId != null">
-        father_id = #{record.fatherId,jdbcType=INTEGER},
+      <if test="record.mname != null">
+        mName = #{record.mname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update power
-    set pid = #{record.pid,jdbcType=INTEGER},
-      menu_id = #{record.menuId,jdbcType=INTEGER},
-      rank = #{record.rank,jdbcType=VARCHAR},
-      rank_name = #{record.rankName,jdbcType=VARCHAR},
-      father_id = #{record.fatherId,jdbcType=INTEGER}
+    update enterprise_worker
+    set id = #{record.id,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      workerName = #{record.workername,jdbcType=VARCHAR},
+      mName = #{record.mname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.Power">
-    update power
+  <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorker">
+    update enterprise_worker
     <set>
-      <if test="menuId != null">
-        menu_id = #{menuId,jdbcType=INTEGER},
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="rank != null">
-        rank = #{rank,jdbcType=VARCHAR},
+      <if test="workername != null">
+        workerName = #{workername,jdbcType=VARCHAR},
       </if>
-      <if test="rankName != null">
-        rank_name = #{rankName,jdbcType=VARCHAR},
-      </if>
-      <if test="fatherId != null">
-        father_id = #{fatherId,jdbcType=INTEGER},
+      <if test="mname != null">
+        mName = #{mname,jdbcType=VARCHAR},
       </if>
     </set>
-    where pid = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.Power">
-    update power
-    set menu_id = #{menuId,jdbcType=INTEGER},
-      rank = #{rank,jdbcType=VARCHAR},
-      rank_name = #{rankName,jdbcType=VARCHAR},
-      father_id = #{fatherId,jdbcType=INTEGER}
-    where pid = #{pid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.EnterpriseWorker">
+    update enterprise_worker
+    set userId = #{userid,jdbcType=VARCHAR},
+      workerName = #{workername,jdbcType=VARCHAR},
+      mName = #{mname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

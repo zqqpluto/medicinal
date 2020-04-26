@@ -3,8 +3,6 @@ package cn.pluto.medicinal.service;
 import cn.pluto.medicinal.pojo.NonPrescriptionDrug;
 import com.github.pagehelper.PageInfo;
 
-import java.util.List;
-
 /**
  * @author CHTW
  * @date 2020-02-05-10:14

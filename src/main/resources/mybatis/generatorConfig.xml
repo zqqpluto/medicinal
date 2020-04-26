@@ -5,6 +5,7 @@
 
 <generatorConfiguration>
     <context id="testTables" targetRuntime="MyBatis3">
+
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
@@ -17,7 +18,6 @@
             <!--数据库中字段，对应生成JavaBean字段缺失或者错误，添加该字段-->
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
-
 
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
             和 NUMERIC 类型解析为java.math.BigDecimal -->
@@ -34,12 +34,14 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
+
         <!-- 【需要改】targetProject:mapper映射文件（接口和xml生成的位置）生成的位置 -->
         <sqlMapGenerator targetPackage="mybatis\mapper"
                          targetProject=".\src\main\resources">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
+
 
         <!-- 【需要改】targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
@@ -48,14 +50,17 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
+
         <!-- 【需要改】指定数据库表 -->
         <table schema="drugregualation" tableName="knowledge_class"></table>
         <table schema="drugregualation" tableName="knowledge_service"></table>
         <table schema="drugregualation" tableName="manufacturer"></table>
-        <table schema="drugregualation" tableName="menu"></table>
+        <table schema="drugregualation" tableName="menu_power"></table>
         <table schema="drugregualation" tableName="non_prescription_drug"></table>
         <table schema="drugregualation" tableName="non_prescription_drug_class"></table>
-        <table schema="drugregualation" tableName="power"></table>
+        <table schema="drugregualation" tableName="user"></table>
+        <table schema="drugregualation" tableName="gov_info"></table>
+        <table schema="drugregualation" tableName="enterprise_worker"></table>
 
 
     </context>

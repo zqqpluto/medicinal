@@ -1,18 +1,15 @@
 package cn.pluto.medicinal.service.imp;
 
 import cn.pluto.medicinal.dao.NonPrescriptionDrugMapper;
-import cn.pluto.medicinal.pojo.KnowledgeService;
 import cn.pluto.medicinal.pojo.NonPrescriptionDrug;
 import cn.pluto.medicinal.pojo.NonPrescriptionDrugExample;
 import cn.pluto.medicinal.service.NonPrescriptionDrugService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.rmi.CORBA.Util;
 import java.util.List;
 
 /**

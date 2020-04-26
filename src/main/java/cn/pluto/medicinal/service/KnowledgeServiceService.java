@@ -3,8 +3,6 @@ package cn.pluto.medicinal.service;
 import cn.pluto.medicinal.pojo.KnowledgeService;
 import com.github.pagehelper.PageInfo;
 
-import java.util.List;
-
 /**
  * @author zqq
  * @create 2020-02-03-11:27
