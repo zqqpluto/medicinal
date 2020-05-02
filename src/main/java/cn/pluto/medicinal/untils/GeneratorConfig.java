@@ -31,9 +31,9 @@ public class GeneratorConfig {
 
     public static void main(String[] args) throws Exception {
         try {
-//            GeneratorConfig generatorSqlmap = new GeneratorConfig();
-//            generatorSqlmap.generator();
-//            System.out.println("生成结束");
+            GeneratorConfig generatorSqlmap = new GeneratorConfig();
+            generatorSqlmap.generator();
+            System.out.println("生成结束");
         } catch (Exception e) {
             e.printStackTrace();
         }

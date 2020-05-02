@@ -10,7 +10,7 @@ public interface NonPrescriptionDrugMapper {
 
     int deleteByExample(NonPrescriptionDrugExample example);
 
-    int deleteByPrimaryKey(Integer nid);
+    int deleteByPrimaryKey(String nid);
 
     int insert(NonPrescriptionDrug record);
 
@@ -18,7 +18,7 @@ public interface NonPrescriptionDrugMapper {
 
     List<NonPrescriptionDrug> selectByExample(NonPrescriptionDrugExample example);
 
-    NonPrescriptionDrug selectByPrimaryKey(Integer nid);
+    NonPrescriptionDrug selectByPrimaryKey(String nid);
 
     int updateByExampleSelective(@Param("record") NonPrescriptionDrug record, @Param("example") NonPrescriptionDrugExample example);
 

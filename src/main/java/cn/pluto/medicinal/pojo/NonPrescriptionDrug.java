@@ -1,7 +1,9 @@
 package cn.pluto.medicinal.pojo;
 
 public class NonPrescriptionDrug {
-    private Integer nid;
+    private String nid;
+
+    private String userid;
 
     private Integer mid;
 
@@ -31,12 +33,26 @@ public class NonPrescriptionDrug {
 
     private String newdrugcertificate;
 
-    public Integer getNid() {
+    private String examineresult;
+
+    private String examinefailmessage;
+
+    private String examineuserid;
+
+    public String getNid() {
         return nid;
     }
 
-    public void setNid(Integer nid) {
-        this.nid = nid;
+    public void setNid(String nid) {
+        this.nid = nid == null ? null : nid.trim();
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public Integer getMid() {
@@ -149,5 +165,29 @@ public class NonPrescriptionDrug {
 
     public void setNewdrugcertificate(String newdrugcertificate) {
         this.newdrugcertificate = newdrugcertificate == null ? null : newdrugcertificate.trim();
+    }
+
+    public String getExamineresult() {
+        return examineresult;
+    }
+
+    public void setExamineresult(String examineresult) {
+        this.examineresult = examineresult == null ? null : examineresult.trim();
+    }
+
+    public String getExaminefailmessage() {
+        return examinefailmessage;
+    }
+
+    public void setExaminefailmessage(String examinefailmessage) {
+        this.examinefailmessage = examinefailmessage == null ? null : examinefailmessage.trim();
+    }
+
+    public String getExamineuserid() {
+        return examineuserid;
+    }
+
+    public void setExamineuserid(String examineuserid) {
+        this.examineuserid = examineuserid == null ? null : examineuserid.trim();
     }
 }

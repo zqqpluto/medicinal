@@ -61,6 +61,7 @@
         <table schema="drugregualation" tableName="user"></table>
         <table schema="drugregualation" tableName="gov_info"></table>
         <table schema="drugregualation" tableName="enterprise_worker"></table>
+        <table schema="drugregualation" tableName="examine"></table>
 
 
     </context>

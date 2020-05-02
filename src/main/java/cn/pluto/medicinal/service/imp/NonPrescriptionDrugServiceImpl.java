@@ -28,7 +28,7 @@ public class NonPrescriptionDrugServiceImpl implements NonPrescriptionDrugServic
      */
     @Override
     public NonPrescriptionDrug getById(Integer nid) {
-        NonPrescriptionDrug nonPrescriptionDrug = nonPrescriptionDrugMapper.selectByPrimaryKey(nid);
+        NonPrescriptionDrug nonPrescriptionDrug = nonPrescriptionDrugMapper.selectByPrimaryKey(String.valueOf(nid));
 
         return nonPrescriptionDrug;
     }
