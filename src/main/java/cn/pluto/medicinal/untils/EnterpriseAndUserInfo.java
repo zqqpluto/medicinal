@@ -55,7 +55,7 @@ public class EnterpriseAndUserInfo {
      */
     private List<String> menuNumList;
 
-    private Integer mid;
+    private String mid;
 
     private String userid;
 

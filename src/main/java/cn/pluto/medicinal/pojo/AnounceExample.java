@@ -3,14 +3,14 @@ package cn.pluto.medicinal.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KnowledgeServiceExample {
+public class AnounceExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public KnowledgeServiceExample() {
+    public AnounceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,63 +104,63 @@ public class KnowledgeServiceExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andKsidIsNull() {
-            addCriterion("ksId is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andKsidIsNotNull() {
-            addCriterion("ksId is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKsidEqualTo(Integer value) {
-            addCriterion("ksId =", value, "ksid");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidNotEqualTo(Integer value) {
-            addCriterion("ksId <>", value, "ksid");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidGreaterThan(Integer value) {
-            addCriterion("ksId >", value, "ksid");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ksId >=", value, "ksid");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidLessThan(Integer value) {
-            addCriterion("ksId <", value, "ksid");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidLessThanOrEqualTo(Integer value) {
-            addCriterion("ksId <=", value, "ksid");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidIn(List<Integer> values) {
-            addCriterion("ksId in", values, "ksid");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidNotIn(List<Integer> values) {
-            addCriterion("ksId not in", values, "ksid");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidBetween(Integer value1, Integer value2) {
-            addCriterion("ksId between", value1, value2, "ksid");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andKsidNotBetween(Integer value1, Integer value2) {
-            addCriterion("ksId not between", value1, value2, "ksid");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
@@ -234,123 +234,73 @@ public class KnowledgeServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andKcidIsNull() {
-            addCriterion("kcId is null");
+        public Criteria andAtitleIsNull() {
+            addCriterion("atitle is null");
             return (Criteria) this;
         }
 
-        public Criteria andKcidIsNotNull() {
-            addCriterion("kcId is not null");
+        public Criteria andAtitleIsNotNull() {
+            addCriterion("atitle is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKcidEqualTo(Integer value) {
-            addCriterion("kcId =", value, "kcid");
+        public Criteria andAtitleEqualTo(String value) {
+            addCriterion("atitle =", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidNotEqualTo(Integer value) {
-            addCriterion("kcId <>", value, "kcid");
+        public Criteria andAtitleNotEqualTo(String value) {
+            addCriterion("atitle <>", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidGreaterThan(Integer value) {
-            addCriterion("kcId >", value, "kcid");
+        public Criteria andAtitleGreaterThan(String value) {
+            addCriterion("atitle >", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("kcId >=", value, "kcid");
+        public Criteria andAtitleGreaterThanOrEqualTo(String value) {
+            addCriterion("atitle >=", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidLessThan(Integer value) {
-            addCriterion("kcId <", value, "kcid");
+        public Criteria andAtitleLessThan(String value) {
+            addCriterion("atitle <", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidLessThanOrEqualTo(Integer value) {
-            addCriterion("kcId <=", value, "kcid");
+        public Criteria andAtitleLessThanOrEqualTo(String value) {
+            addCriterion("atitle <=", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidIn(List<Integer> values) {
-            addCriterion("kcId in", values, "kcid");
+        public Criteria andAtitleLike(String value) {
+            addCriterion("atitle like", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidNotIn(List<Integer> values) {
-            addCriterion("kcId not in", values, "kcid");
+        public Criteria andAtitleNotLike(String value) {
+            addCriterion("atitle not like", value, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidBetween(Integer value1, Integer value2) {
-            addCriterion("kcId between", value1, value2, "kcid");
+        public Criteria andAtitleIn(List<String> values) {
+            addCriterion("atitle in", values, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andKcidNotBetween(Integer value1, Integer value2) {
-            addCriterion("kcId not between", value1, value2, "kcid");
+        public Criteria andAtitleNotIn(List<String> values) {
+            addCriterion("atitle not in", values, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andNdcidIsNull() {
-            addCriterion("ndcId is null");
+        public Criteria andAtitleBetween(String value1, String value2) {
+            addCriterion("atitle between", value1, value2, "atitle");
             return (Criteria) this;
         }
 
-        public Criteria andNdcidIsNotNull() {
-            addCriterion("ndcId is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidEqualTo(Integer value) {
-            addCriterion("ndcId =", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidNotEqualTo(Integer value) {
-            addCriterion("ndcId <>", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidGreaterThan(Integer value) {
-            addCriterion("ndcId >", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ndcId >=", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidLessThan(Integer value) {
-            addCriterion("ndcId <", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidLessThanOrEqualTo(Integer value) {
-            addCriterion("ndcId <=", value, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidIn(List<Integer> values) {
-            addCriterion("ndcId in", values, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidNotIn(List<Integer> values) {
-            addCriterion("ndcId not in", values, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidBetween(Integer value1, Integer value2) {
-            addCriterion("ndcId between", value1, value2, "ndcid");
-            return (Criteria) this;
-        }
-
-        public Criteria andNdcidNotBetween(Integer value1, Integer value2) {
-            addCriterion("ndcId not between", value1, value2, "ndcid");
+        public Criteria andAtitleNotBetween(String value1, String value2) {
+            addCriterion("atitle not between", value1, value2, "atitle");
             return (Criteria) this;
         }
 
@@ -421,146 +371,6 @@ public class KnowledgeServiceExample {
 
         public Criteria andMidNotBetween(String value1, String value2) {
             addCriterion("mId not between", value1, value2, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathIsNull() {
-            addCriterion("ksPath is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathIsNotNull() {
-            addCriterion("ksPath is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathEqualTo(String value) {
-            addCriterion("ksPath =", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathNotEqualTo(String value) {
-            addCriterion("ksPath <>", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathGreaterThan(String value) {
-            addCriterion("ksPath >", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathGreaterThanOrEqualTo(String value) {
-            addCriterion("ksPath >=", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathLessThan(String value) {
-            addCriterion("ksPath <", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathLessThanOrEqualTo(String value) {
-            addCriterion("ksPath <=", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathLike(String value) {
-            addCriterion("ksPath like", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathNotLike(String value) {
-            addCriterion("ksPath not like", value, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathIn(List<String> values) {
-            addCriterion("ksPath in", values, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathNotIn(List<String> values) {
-            addCriterion("ksPath not in", values, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathBetween(String value1, String value2) {
-            addCriterion("ksPath between", value1, value2, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKspathNotBetween(String value1, String value2) {
-            addCriterion("ksPath not between", value1, value2, "kspath");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleIsNull() {
-            addCriterion("ksTitle is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleIsNotNull() {
-            addCriterion("ksTitle is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleEqualTo(String value) {
-            addCriterion("ksTitle =", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleNotEqualTo(String value) {
-            addCriterion("ksTitle <>", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleGreaterThan(String value) {
-            addCriterion("ksTitle >", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleGreaterThanOrEqualTo(String value) {
-            addCriterion("ksTitle >=", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleLessThan(String value) {
-            addCriterion("ksTitle <", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleLessThanOrEqualTo(String value) {
-            addCriterion("ksTitle <=", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleLike(String value) {
-            addCriterion("ksTitle like", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleNotLike(String value) {
-            addCriterion("ksTitle not like", value, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleIn(List<String> values) {
-            addCriterion("ksTitle in", values, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleNotIn(List<String> values) {
-            addCriterion("ksTitle not in", values, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleBetween(String value1, String value2) {
-            addCriterion("ksTitle between", value1, value2, "kstitle");
-            return (Criteria) this;
-        }
-
-        public Criteria andKstitleNotBetween(String value1, String value2) {
-            addCriterion("ksTitle not between", value1, value2, "kstitle");
             return (Criteria) this;
         }
     }

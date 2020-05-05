@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.pluto.medicinal.dao.KnowledgeServiceMapper">
-  <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.KnowledgeService">
-    <id column="ksId" jdbcType="INTEGER" property="ksid" />
+<mapper namespace="cn.pluto.medicinal.dao.AnounceMapper">
+  <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.Anounce">
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
-    <result column="kcId" jdbcType="INTEGER" property="kcid" />
-    <result column="ndcId" jdbcType="INTEGER" property="ndcid" />
+    <result column="atitle" jdbcType="VARCHAR" property="atitle" />
     <result column="mId" jdbcType="VARCHAR" property="mid" />
-    <result column="ksPath" jdbcType="VARCHAR" property="kspath" />
-    <result column="ksTitle" jdbcType="VARCHAR" property="kstitle" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.pluto.medicinal.pojo.Anounce">
+    <result column="acontent" jdbcType="LONGVARCHAR" property="acontent" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +69,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ksId, userId, kcId, ndcId, mId, ksPath, ksTitle
+    id, userId, atitle, mId
   </sql>
-  <select id="selectByExample" parameterType="cn.pluto.medicinal.pojo.KnowledgeServiceExample" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    acontent
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="cn.pluto.medicinal.pojo.AnounceExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from knowledge_service
+    ,
+    <include refid="Blob_Column_List" />
+    from anounce
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,159 +90,162 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.pluto.medicinal.pojo.AnounceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from anounce
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    from knowledge_service
-    where ksId = #{ksid,jdbcType=INTEGER}
+    ,
+    <include refid="Blob_Column_List" />
+    from anounce
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from knowledge_service
-    where ksId = #{ksid,jdbcType=INTEGER}
+    delete from anounce
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.KnowledgeServiceExample">
-    delete from knowledge_service
+  <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.AnounceExample">
+    delete from anounce
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.pluto.medicinal.pojo.KnowledgeService">
-    insert into knowledge_service (ksId, userId, kcId, 
-      ndcId, mId, ksPath, 
-      ksTitle)
-    values (#{ksid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{kcid,jdbcType=INTEGER}, 
-      #{ndcid,jdbcType=INTEGER}, #{mid,jdbcType=VARCHAR}, #{kspath,jdbcType=VARCHAR}, 
-      #{kstitle,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="cn.pluto.medicinal.pojo.Anounce">
+    insert into anounce (id, userId, atitle, 
+      mId, acontent)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{atitle,jdbcType=VARCHAR}, 
+      #{mid,jdbcType=VARCHAR}, #{acontent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.KnowledgeService">
-    insert into knowledge_service
+  <insert id="insertSelective" parameterType="cn.pluto.medicinal.pojo.Anounce">
+    insert into anounce
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ksid != null">
-        ksId,
+      <if test="id != null">
+        id,
       </if>
       <if test="userid != null">
         userId,
       </if>
-      <if test="kcid != null">
-        kcId,
-      </if>
-      <if test="ndcid != null">
-        ndcId,
+      <if test="atitle != null">
+        atitle,
       </if>
       <if test="mid != null">
         mId,
       </if>
-      <if test="kspath != null">
-        ksPath,
-      </if>
-      <if test="kstitle != null">
-        ksTitle,
+      <if test="acontent != null">
+        acontent,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ksid != null">
-        #{ksid,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="userid != null">
         #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="kcid != null">
-        #{kcid,jdbcType=INTEGER},
-      </if>
-      <if test="ndcid != null">
-        #{ndcid,jdbcType=INTEGER},
+      <if test="atitle != null">
+        #{atitle,jdbcType=VARCHAR},
       </if>
       <if test="mid != null">
         #{mid,jdbcType=VARCHAR},
       </if>
-      <if test="kspath != null">
-        #{kspath,jdbcType=VARCHAR},
-      </if>
-      <if test="kstitle != null">
-        #{kstitle,jdbcType=VARCHAR},
+      <if test="acontent != null">
+        #{acontent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.pluto.medicinal.pojo.KnowledgeServiceExample" resultType="java.lang.Long">
-    select count(*) from knowledge_service
+  <select id="countByExample" parameterType="cn.pluto.medicinal.pojo.AnounceExample" resultType="java.lang.Long">
+    select count(*) from anounce
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update knowledge_service
+    update anounce
     <set>
-      <if test="record.ksid != null">
-        ksId = #{record.ksid,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null">
         userId = #{record.userid,jdbcType=VARCHAR},
       </if>
-      <if test="record.kcid != null">
-        kcId = #{record.kcid,jdbcType=INTEGER},
-      </if>
-      <if test="record.ndcid != null">
-        ndcId = #{record.ndcid,jdbcType=INTEGER},
+      <if test="record.atitle != null">
+        atitle = #{record.atitle,jdbcType=VARCHAR},
       </if>
       <if test="record.mid != null">
         mId = #{record.mid,jdbcType=VARCHAR},
       </if>
-      <if test="record.kspath != null">
-        ksPath = #{record.kspath,jdbcType=VARCHAR},
-      </if>
-      <if test="record.kstitle != null">
-        ksTitle = #{record.kstitle,jdbcType=VARCHAR},
+      <if test="record.acontent != null">
+        acontent = #{record.acontent,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update anounce
+    set id = #{record.id,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      atitle = #{record.atitle,jdbcType=VARCHAR},
+      mId = #{record.mid,jdbcType=VARCHAR},
+      acontent = #{record.acontent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update knowledge_service
-    set ksId = #{record.ksid,jdbcType=INTEGER},
+    update anounce
+    set id = #{record.id,jdbcType=INTEGER},
       userId = #{record.userid,jdbcType=VARCHAR},
-      kcId = #{record.kcid,jdbcType=INTEGER},
-      ndcId = #{record.ndcid,jdbcType=INTEGER},
-      mId = #{record.mid,jdbcType=VARCHAR},
-      ksPath = #{record.kspath,jdbcType=VARCHAR},
-      ksTitle = #{record.kstitle,jdbcType=VARCHAR}
+      atitle = #{record.atitle,jdbcType=VARCHAR},
+      mId = #{record.mid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.KnowledgeService">
-    update knowledge_service
+  <update id="updateByPrimaryKeySelective" parameterType="cn.pluto.medicinal.pojo.Anounce">
+    update anounce
     <set>
       <if test="userid != null">
         userId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="kcid != null">
-        kcId = #{kcid,jdbcType=INTEGER},
-      </if>
-      <if test="ndcid != null">
-        ndcId = #{ndcid,jdbcType=INTEGER},
+      <if test="atitle != null">
+        atitle = #{atitle,jdbcType=VARCHAR},
       </if>
       <if test="mid != null">
         mId = #{mid,jdbcType=VARCHAR},
       </if>
-      <if test="kspath != null">
-        ksPath = #{kspath,jdbcType=VARCHAR},
-      </if>
-      <if test="kstitle != null">
-        ksTitle = #{kstitle,jdbcType=VARCHAR},
+      <if test="acontent != null">
+        acontent = #{acontent,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where ksId = #{ksid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.KnowledgeService">
-    update knowledge_service
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.pluto.medicinal.pojo.Anounce">
+    update anounce
     set userId = #{userid,jdbcType=VARCHAR},
-      kcId = #{kcid,jdbcType=INTEGER},
-      ndcId = #{ndcid,jdbcType=INTEGER},
+      atitle = #{atitle,jdbcType=VARCHAR},
       mId = #{mid,jdbcType=VARCHAR},
-      ksPath = #{kspath,jdbcType=VARCHAR},
-      ksTitle = #{kstitle,jdbcType=VARCHAR}
-    where ksId = #{ksid,jdbcType=INTEGER}
+      acontent = #{acontent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.Anounce">
+    update anounce
+    set userId = #{userid,jdbcType=VARCHAR},
+      atitle = #{atitle,jdbcType=VARCHAR},
+      mId = #{mid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

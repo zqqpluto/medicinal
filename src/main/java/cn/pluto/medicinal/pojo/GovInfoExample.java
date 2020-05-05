@@ -114,52 +114,62 @@ public class GovInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andGovIdEqualTo(Integer value) {
+        public Criteria andGovIdEqualTo(String value) {
             addCriterion("gov_id =", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdNotEqualTo(Integer value) {
+        public Criteria andGovIdNotEqualTo(String value) {
             addCriterion("gov_id <>", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdGreaterThan(Integer value) {
+        public Criteria andGovIdGreaterThan(String value) {
             addCriterion("gov_id >", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGovIdGreaterThanOrEqualTo(String value) {
             addCriterion("gov_id >=", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdLessThan(Integer value) {
+        public Criteria andGovIdLessThan(String value) {
             addCriterion("gov_id <", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdLessThanOrEqualTo(Integer value) {
+        public Criteria andGovIdLessThanOrEqualTo(String value) {
             addCriterion("gov_id <=", value, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdIn(List<Integer> values) {
+        public Criteria andGovIdLike(String value) {
+            addCriterion("gov_id like", value, "govId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGovIdNotLike(String value) {
+            addCriterion("gov_id not like", value, "govId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGovIdIn(List<String> values) {
             addCriterion("gov_id in", values, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdNotIn(List<Integer> values) {
+        public Criteria andGovIdNotIn(List<String> values) {
             addCriterion("gov_id not in", values, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdBetween(Integer value1, Integer value2) {
+        public Criteria andGovIdBetween(String value1, String value2) {
             addCriterion("gov_id between", value1, value2, "govId");
             return (Criteria) this;
         }
 
-        public Criteria andGovIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andGovIdNotBetween(String value1, String value2) {
             addCriterion("gov_id not between", value1, value2, "govId");
             return (Criteria) this;
         }

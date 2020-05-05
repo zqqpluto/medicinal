@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.NonPrescriptionDrug">
     <id column="nId" jdbcType="VARCHAR" property="nid" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
-    <result column="mId" jdbcType="INTEGER" property="mid" />
+    <result column="mId" jdbcType="VARCHAR" property="mid" />
     <result column="ndcId" jdbcType="INTEGER" property="ndcid" />
     <result column="nName" jdbcType="VARCHAR" property="nname" />
     <result column="fromDrug" jdbcType="VARCHAR" property="fromdrug" />
@@ -123,7 +123,7 @@
       batch, newBatch, mark, 
       newDrugCertificate, examineResult, examineFailMessage, 
       examineUserId)
-    values (#{nid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{mid,jdbcType=INTEGER}, 
+    values (#{nid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, 
       #{ndcid,jdbcType=INTEGER}, #{nname,jdbcType=VARCHAR}, #{fromdrug,jdbcType=VARCHAR}, 
       #{specs,jdbcType=VARCHAR}, #{indication,jdbcType=VARCHAR}, #{usetaboo,jdbcType=VARCHAR}, 
       #{dosageandadministration,jdbcType=VARCHAR}, #{basis,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
@@ -200,7 +200,7 @@
         #{userid,jdbcType=VARCHAR},
       </if>
       <if test="mid != null">
-        #{mid,jdbcType=INTEGER},
+        #{mid,jdbcType=VARCHAR},
       </if>
       <if test="ndcid != null">
         #{ndcid,jdbcType=INTEGER},
@@ -268,7 +268,7 @@
         userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.mid != null">
-        mId = #{record.mid,jdbcType=INTEGER},
+        mId = #{record.mid,jdbcType=VARCHAR},
       </if>
       <if test="record.ndcid != null">
         ndcId = #{record.ndcid,jdbcType=INTEGER},
@@ -327,7 +327,7 @@
     update non_prescription_drug
     set nId = #{record.nid,jdbcType=VARCHAR},
       userId = #{record.userid,jdbcType=VARCHAR},
-      mId = #{record.mid,jdbcType=INTEGER},
+      mId = #{record.mid,jdbcType=VARCHAR},
       ndcId = #{record.ndcid,jdbcType=INTEGER},
       nName = #{record.nname,jdbcType=VARCHAR},
       fromDrug = #{record.fromdrug,jdbcType=VARCHAR},
@@ -355,7 +355,7 @@
         userId = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="mid != null">
-        mId = #{mid,jdbcType=INTEGER},
+        mId = #{mid,jdbcType=VARCHAR},
       </if>
       <if test="ndcid != null">
         ndcId = #{ndcid,jdbcType=INTEGER},
@@ -411,7 +411,7 @@
   <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.NonPrescriptionDrug">
     update non_prescription_drug
     set userId = #{userid,jdbcType=VARCHAR},
-      mId = #{mid,jdbcType=INTEGER},
+      mId = #{mid,jdbcType=VARCHAR},
       ndcId = #{ndcid,jdbcType=INTEGER},
       nName = #{nname,jdbcType=VARCHAR},
       fromDrug = #{fromdrug,jdbcType=VARCHAR},

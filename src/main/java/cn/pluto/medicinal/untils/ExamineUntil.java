@@ -32,7 +32,7 @@ public class ExamineUntil implements Comparable<ExamineUntil>{
      */
     private String nid;
 
-    private Integer mid;
+    private String mid;
 
     private String ndcid;
 

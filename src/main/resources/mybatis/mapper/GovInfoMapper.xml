@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.pluto.medicinal.dao.GovInfoMapper">
   <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.GovInfo">
-    <id column="gov_id" jdbcType="INTEGER" property="govId" />
+    <id column="gov_id" jdbcType="VARCHAR" property="govId" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="gov_dep" jdbcType="VARCHAR" property="govDep" />
     <result column="gov_man" jdbcType="VARCHAR" property="govMan" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from gov_info
-    where gov_id = #{govId,jdbcType=INTEGER}
+    where gov_id = #{govId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from gov_info
-    where gov_id = #{govId,jdbcType=INTEGER}
+    where gov_id = #{govId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.GovInfoExample">
     delete from gov_info
@@ -105,7 +105,7 @@
     insert into gov_info (gov_id, userId, gov_dep, 
       gov_man, gov_pho, gov_phone_self, 
       gov_address)
-    values (#{govId,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{govDep,jdbcType=VARCHAR}, 
+    values (#{govId,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{govDep,jdbcType=VARCHAR}, 
       #{govMan,jdbcType=VARCHAR}, #{govPho,jdbcType=VARCHAR}, #{govPhoneSelf,jdbcType=VARCHAR}, 
       #{govAddress,jdbcType=VARCHAR})
   </insert>
@@ -136,7 +136,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="govId != null">
-        #{govId,jdbcType=INTEGER},
+        #{govId,jdbcType=VARCHAR},
       </if>
       <if test="userid != null">
         #{userid,jdbcType=VARCHAR},
@@ -168,7 +168,7 @@
     update gov_info
     <set>
       <if test="record.govId != null">
-        gov_id = #{record.govId,jdbcType=INTEGER},
+        gov_id = #{record.govId,jdbcType=VARCHAR},
       </if>
       <if test="record.userid != null">
         userId = #{record.userid,jdbcType=VARCHAR},
@@ -195,7 +195,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update gov_info
-    set gov_id = #{record.govId,jdbcType=INTEGER},
+    set gov_id = #{record.govId,jdbcType=VARCHAR},
       userId = #{record.userid,jdbcType=VARCHAR},
       gov_dep = #{record.govDep,jdbcType=VARCHAR},
       gov_man = #{record.govMan,jdbcType=VARCHAR},
@@ -228,7 +228,7 @@
         gov_address = #{govAddress,jdbcType=VARCHAR},
       </if>
     </set>
-    where gov_id = #{govId,jdbcType=INTEGER}
+    where gov_id = #{govId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.GovInfo">
     update gov_info
@@ -238,6 +238,6 @@
       gov_pho = #{govPho,jdbcType=VARCHAR},
       gov_phone_self = #{govPhoneSelf,jdbcType=VARCHAR},
       gov_address = #{govAddress,jdbcType=VARCHAR}
-    where gov_id = #{govId,jdbcType=INTEGER}
+    where gov_id = #{govId,jdbcType=VARCHAR}
   </update>
 </mapper>

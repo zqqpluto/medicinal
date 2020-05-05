@@ -1,7 +1,7 @@
 package cn.pluto.medicinal.pojo;
 
 public class Manufacturer {
-    private Integer mid;
+    private String mid;
 
     private String userid;
 
@@ -57,12 +57,12 @@ public class Manufacturer {
 
     private String gmp;
 
-    public Integer getMid() {
+    public String getMid() {
         return mid;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setMid(String mid) {
+        this.mid = mid == null ? null : mid.trim();
     }
 
     public String getUserid() {

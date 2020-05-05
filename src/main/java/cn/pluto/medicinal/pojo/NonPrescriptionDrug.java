@@ -5,7 +5,7 @@ public class NonPrescriptionDrug {
 
     private String userid;
 
-    private Integer mid;
+    private String mid;
 
     private Integer ndcid;
 
@@ -55,12 +55,12 @@ public class NonPrescriptionDrug {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public Integer getMid() {
+    public String getMid() {
         return mid;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setMid(String mid) {
+        this.mid = mid == null ? null : mid.trim();
     }
 
     public Integer getNdcid() {

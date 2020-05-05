@@ -3,11 +3,13 @@ package cn.pluto.medicinal.pojo;
 public class KnowledgeService {
     private Integer ksid;
 
+    private String userid;
+
     private Integer kcid;
 
     private Integer ndcid;
 
-    private Integer mid;
+    private String mid;
 
     private String kspath;
 
@@ -19,6 +21,14 @@ public class KnowledgeService {
 
     public void setKsid(Integer ksid) {
         this.ksid = ksid;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public Integer getKcid() {
@@ -37,12 +47,12 @@ public class KnowledgeService {
         this.ndcid = ndcid;
     }
 
-    public Integer getMid() {
+    public String getMid() {
         return mid;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setMid(String mid) {
+        this.mid = mid == null ? null : mid.trim();
     }
 
     public String getKspath() {

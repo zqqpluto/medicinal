@@ -103,7 +103,8 @@ public class UserServiceImpl implements UserService {
             for (MenuPower menuPower : menuPowers) {
                 if (menuPower.getMenuFarherId() != null
                         && menuPower.getMenuFarherId().equals(mp.getId())
-                        && menuPower.getMenuState() == 1) {
+                        && menuPower.getMenuState() == 1 || mp.getId().equals("103") && menuPower.getMenuId().equals(
+                        "103-2")) {
                     m = new Menus();
                     m.setId(menuPower.getMenuId());
                     m.setName(menuPower.getMenuName());

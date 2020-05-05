@@ -196,7 +196,7 @@ public class DrugController {
     public Result examineNote(@RequestParam(required = true,defaultValue = "1") Integer page,
                            @RequestParam(required = true,defaultValue = "10") Integer size,
                            @RequestParam(required = true) String userName,
-                           @RequestParam(required = true) String nameSearch,
+                           @RequestParam(required = false) String nameSearch,
                               @RequestParam(required = false) String power){
         User user = new User();
         user.setUseraccount(userName);
@@ -209,7 +209,7 @@ public class DrugController {
         userUntil1.setUserUntils(selfAndLowerUserByUserAccount);
 
         ArrayList<ExamineUntil> examineUntils = new ArrayList<>();
-        examineUntils = drugService.getAlreadyExamineList(userUntil1, examineUntils, power);
+        examineUntils = drugService.getAlreadyExamineList(userUntil1, examineUntils, power, nameSearch);
 
         PageInfo<ExamineUntil> pageInfo = PageInfoUtils.list2PageInfo(examineUntils, page, size);
 
@@ -220,6 +220,13 @@ public class DrugController {
     }
 
 
+    /**
+     * @Description: delExamineDrug 处理删除请求
+     * @param: [nid]
+     * @return: cn.pluto.medicinal.untils.Result
+     * @auther: zqq
+     * @date: 20/5/4 21:23
+     */
     @DeleteMapping("/examineDrug/{nid}")
     @CrossOrigin
     @Transactional

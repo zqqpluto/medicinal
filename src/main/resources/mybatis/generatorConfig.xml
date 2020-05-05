@@ -62,6 +62,7 @@
         <table schema="drugregualation" tableName="gov_info"></table>
         <table schema="drugregualation" tableName="enterprise_worker"></table>
         <table schema="drugregualation" tableName="examine"></table>
+        <table schema="drugregualation" tableName="anounce"></table>
 
 
     </context>

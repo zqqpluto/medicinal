@@ -83,7 +83,7 @@ public class DrugServiceImpl implements DrugService {
         UserExample userExample = null;
         List<ExamineUntil> examineUntilList = new ArrayList<>();
         for (NonPrescriptionDrug nonPrescriptionDrug : nonPrescriptionDrugs) {
-            manufacturerExample.createCriteria().andMidEqualTo(nonPrescriptionDrug.getMid());
+            manufacturerExample.createCriteria().andMidEqualTo(nonPrescriptionDrug.getMid()+"");
             List<Manufacturer> manufacturers = manufacturerMapper.selectByExample(manufacturerExample);
             userExample = new UserExample();
             userExample.createCriteria().andUseridEqualTo(nonPrescriptionDrug.getExamineuserid());
@@ -101,7 +101,7 @@ public class DrugServiceImpl implements DrugService {
         examineUntil.setNid(nonPrescriptionDrug.getNid());
         examineUntil.setUserid(nonPrescriptionDrug.getUserid());
         examineUntil.setUsername(user.getUsername());
-        examineUntil.setMid(nonPrescriptionDrug.getMid());
+        examineUntil.setMid(nonPrescriptionDrug.getMid()+"");
         if (nonPrescriptionDrug.getNdcid() == 1){
             examineUntil.setNdcid("乙类");
         }else {
@@ -253,20 +253,22 @@ public class DrugServiceImpl implements DrugService {
     @Override
     public ArrayList<ExamineUntil> getAlreadyExamineList(UserUntil userUntil1,
                                                          ArrayList<ExamineUntil> examineUntils,
-                                                         String power) {
+                                                         String power, String nameSearch) {
         if (userUntil1.getUserUntils() != null){
             for (UserUntil userUntil : userUntil1.getUserUntils()) {
-                examineUntils = getAlreadyExamineList(userUntil, examineUntils, power);
+                examineUntils = getAlreadyExamineList(userUntil, examineUntils, power, nameSearch);
             }
         }
         NonPrescriptionDrugExample nonPrescriptionDrugExample = new NonPrescriptionDrugExample();
         NonPrescriptionDrugExample.Criteria criteria = nonPrescriptionDrugExample.createCriteria();
         if (StringUtils.isEmpty(power)) {
             criteria.andExamineuseridEqualTo(userUntil1.getUserid())
-                    .andExamineresultNotEqualTo(ExamineFinal.EXAMINE_NOT_STATE);
+                    .andExamineresultNotEqualTo(ExamineFinal.EXAMINE_NOT_STATE)
+            .andNnameEqualTo(nameSearch);
         }else {
             criteria.andExamineuseridEqualTo(userUntil1.getUserid())
-                    .andExamineresultEqualTo(ExamineFinal.EXAMINE_PASS);
+                    .andExamineresultEqualTo(ExamineFinal.EXAMINE_PASS)
+            .andNnameEqualTo(nameSearch);
         }
         List<NonPrescriptionDrug> nonPrescriptionDrugs =
                 nonPrescriptionDrugMapper.selectByExample(nonPrescriptionDrugExample);
@@ -275,7 +277,7 @@ public class DrugServiceImpl implements DrugService {
         if (nonPrescriptionDrugs.size() != 0){
             for (NonPrescriptionDrug drug : nonPrescriptionDrugs) {
                 manufacturerExample= new ManufacturerExample();
-                manufacturerExample.createCriteria().andMidEqualTo(drug.getMid());
+                manufacturerExample.createCriteria().andMidEqualTo(drug.getMid()+"");
                 List<Manufacturer> manufacturers = manufacturerMapper.selectByExample(manufacturerExample);
                 examineUntil = setExamineUntil2(userUntil1, drug, manufacturers.get(0));
                 examineUntils.add(examineUntil);
@@ -289,7 +291,7 @@ public class DrugServiceImpl implements DrugService {
         examineUntil.setUserid(userUntil1.getUserid());
         examineUntil.setUsername(userUntil1.getUsername());
         examineUntil.setUseraccount(userUntil1.getUseraccount());
-        examineUntil.setMid(userUntil1.getMid());
+        examineUntil.setMid(userUntil1.getMid()+"");
         examineUntil.setMname(userUntil1.getMname());
         examineUntil.setNid(drug.getNid());
         if (drug.getNdcid() == 1){
@@ -313,7 +315,7 @@ public class DrugServiceImpl implements DrugService {
         examineUntil.setExamineresult(drug.getExamineresult());
         examineUntil.setExaminefailmessage(drug.getExaminefailmessage());
 
-        examineUntil.setMid(manufacturer.getMid());
+        examineUntil.setMid(manufacturer.getMid()+"");
         examineUntil.setMname(manufacturer.getMname());
         return examineUntil;
     }

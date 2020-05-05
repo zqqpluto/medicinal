@@ -10,7 +10,7 @@ public interface GovInfoMapper {
 
     int deleteByExample(GovInfoExample example);
 
-    int deleteByPrimaryKey(Integer govId);
+    int deleteByPrimaryKey(String govId);
 
     int insert(GovInfo record);
 
@@ -18,7 +18,7 @@ public interface GovInfoMapper {
 
     List<GovInfo> selectByExample(GovInfoExample example);
 
-    GovInfo selectByPrimaryKey(Integer govId);
+    GovInfo selectByPrimaryKey(String govId);
 
     int updateByExampleSelective(@Param("record") GovInfo record, @Param("example") GovInfoExample example);
 

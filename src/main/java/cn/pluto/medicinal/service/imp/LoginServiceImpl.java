@@ -117,9 +117,11 @@ public class LoginServiceImpl implements LoginService {
         for (Menu mp : menuList) {
             List<Menu> mpl = new ArrayList<>();
             for (MenuPower menuPower : menuPowers) {
+
                 if (menuPower.getMenuFarherId() != null
                         && menuPower.getMenuFarherId().equals(mp.getId())
-                        && menuPower.getMenuState() == 1) {
+                        && menuPower.getMenuState() == 1 || mp.getId().equals("103") && menuPower.getMenuId().equals(
+                                "103-2")) {
                     m = new Menu();
                     m.setId(menuPower.getMenuId());
                     m.setIcon(menuPower.getIcon());
@@ -140,7 +142,7 @@ public class LoginServiceImpl implements LoginService {
                         List<Menu> mpl = new ArrayList<>();
                         for (MenuPower menuPower : menuPowers) {
                             if (menuPower.getMenuFarherId() != null
-                                    && menuPower.getMenuFarherId().equals(sub.getId())
+                                    && menuPower.getMenuFarherId().equals("103-2")
                                     && menuPower.getMenuState() == 1) {
                                 m = new Menu();
                                 m.setId(menuPower.getMenuId());

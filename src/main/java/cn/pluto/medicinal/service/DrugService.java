@@ -78,7 +78,7 @@ public interface DrugService {
      * @return
      */
     ArrayList<ExamineUntil> getAlreadyExamineList(UserUntil userUntil1, ArrayList<ExamineUntil> examineUntils,
-                                                  String power);
+                                                  String power, String nameSearch);
 
 
 }

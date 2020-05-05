@@ -1,7 +1,7 @@
 package cn.pluto.medicinal.pojo;
 
 public class GovInfo {
-    private Integer govId;
+    private String govId;
 
     private String userid;
 
@@ -15,12 +15,12 @@ public class GovInfo {
 
     private String govAddress;
 
-    public Integer getGovId() {
+    public String getGovId() {
         return govId;
     }
 
-    public void setGovId(Integer govId) {
-        this.govId = govId;
+    public void setGovId(String govId) {
+        this.govId = govId == null ? null : govId.trim();
     }
 
     public String getUserid() {

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.pluto.medicinal.dao.ManufacturerMapper">
   <resultMap id="BaseResultMap" type="cn.pluto.medicinal.pojo.Manufacturer">
-    <id column="mId" jdbcType="INTEGER" property="mid" />
+    <id column="mId" jdbcType="VARCHAR" property="mid" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="mName" jdbcType="VARCHAR" property="mname" />
     <result column="province" jdbcType="VARCHAR" property="province" />
@@ -109,15 +109,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from manufacturer
-    where mId = #{mid,jdbcType=INTEGER}
+    where mId = #{mid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from manufacturer
-    where mId = #{mid,jdbcType=INTEGER}
+    where mId = #{mid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.pluto.medicinal.pojo.ManufacturerExample">
     delete from manufacturer
@@ -136,7 +136,7 @@
       eName, oName, insurePersons, 
       otStaff, operatingPeriod, address, 
       gmp)
-    values (#{mid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{mname,jdbcType=VARCHAR}, 
+    values (#{mid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{mname,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{web,jdbcType=VARCHAR}, #{recordnumber,jdbcType=VARCHAR}, 
       #{productionnumber,jdbcType=VARCHAR}, #{mainproduce,jdbcType=VARCHAR}, #{legalperson,jdbcType=VARCHAR}, 
       #{registeredcapital,jdbcType=VARCHAR}, #{paidincapital,jdbcType=VARCHAR}, #{stateoperation,jdbcType=VARCHAR}, 
@@ -237,7 +237,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="mid != null">
-        #{mid,jdbcType=INTEGER},
+        #{mid,jdbcType=VARCHAR},
       </if>
       <if test="userid != null">
         #{userid,jdbcType=VARCHAR},
@@ -332,7 +332,7 @@
     update manufacturer
     <set>
       <if test="record.mid != null">
-        mId = #{record.mid,jdbcType=INTEGER},
+        mId = #{record.mid,jdbcType=VARCHAR},
       </if>
       <if test="record.userid != null">
         userId = #{record.userid,jdbcType=VARCHAR},
@@ -422,7 +422,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update manufacturer
-    set mId = #{record.mid,jdbcType=INTEGER},
+    set mId = #{record.mid,jdbcType=VARCHAR},
       userId = #{record.userid,jdbcType=VARCHAR},
       mName = #{record.mname,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
@@ -539,7 +539,7 @@
         gmp = #{gmp,jdbcType=VARCHAR},
       </if>
     </set>
-    where mId = #{mid,jdbcType=INTEGER}
+    where mId = #{mid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.pluto.medicinal.pojo.Manufacturer">
     update manufacturer
@@ -570,6 +570,6 @@
       operatingPeriod = #{operatingperiod,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       gmp = #{gmp,jdbcType=VARCHAR}
-    where mId = #{mid,jdbcType=INTEGER}
+    where mId = #{mid,jdbcType=VARCHAR}
   </update>
 </mapper>
