@@ -140,7 +140,7 @@ public class KnowledgeServiceServiceImpl implements KnowledgeServiceService{
     public ArrayList<KnowledgeServiceUntil>  getKonwledgeList(UserUntil userUntil1,
                                          ArrayList<KnowledgeServiceUntil> knowledgeServiceUntils, String kcid,
                                                               String nameSearch) {
-        if (userUntil1.getUserUntils() != null){
+        if (userUntil1.getUserUntils().size() != 0){
             for (UserUntil userUntil : userUntil1.getUserUntils()) {
                 knowledgeServiceUntils = getKonwledgeList(userUntil, knowledgeServiceUntils, kcid, nameSearch);
             }
@@ -169,7 +169,9 @@ public class KnowledgeServiceServiceImpl implements KnowledgeServiceService{
                         List<GovInfo> govInfos = govinfoMapper.selectByExample(govInfoExample);
                         knowledgeServiceUntil = setKnowledgeUntil2(userUntil1, knowledgeService, govInfos.get(0));
                     }
+                    knowledgeServiceUntils.add(knowledgeServiceUntil);
                 }
+
             }
         }
         return knowledgeServiceUntils;

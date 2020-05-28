@@ -341,11 +341,11 @@
                 success: function (data) {
                     var str = "<table class='table table-striped table-hover'>";
                     $(data.data.list).each(function (index, item) {
-                        var kind = item.ndcid == 0 ? '甲类':'乙类'
+                        // var kind = item.ndcid == 0 ? '甲类':'乙类'
                         str +=
                             "<tr class='borderTr'> <td><span class='badge'>"+((data.data.pageNum-1)*10+index+1)+"</span></td>"
                             +"<td style='width: 90%' ><a href='"+item.kspath+"'>"+item.kstitle+"</a></td>" +
-                            "<td style='width: 10%'>"+kind+"</td> </tr>"
+                            "</tr>"
                     });
                     str += "</table>"
                     $("#inner-box-left").html(str)
